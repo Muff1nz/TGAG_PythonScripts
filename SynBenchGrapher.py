@@ -33,9 +33,9 @@ for line in file:
         inGraph = False
 
     elif inGraph:
-        parsed = parse.parse("x:{}|y:{}", line)
-        graphs[len(graphs) - 1][0].append(float(parsed[0]))
-        graphs[len(graphs) - 1][1].append(float(parsed[1]))
+        parsed = parse.parse("Time: {} Seconds | Average fps: {} | Threads: {}", line)
+        graphs[len(graphs) - 1][0].append(float(parsed[2]))
+        graphs[len(graphs) - 1][1].append(float(parsed[0]))
 
 i = 0
 for graph in graphs:
@@ -51,7 +51,7 @@ if len(labels) > 0:
 
 
 plt.axis([0, timeMax + 5, 0, fpsMax + 10])
-plt.ylabel("FPS")
-plt.xlabel("TIME")
+plt.ylabel("TIME")
+plt.xlabel("THREADS")
 plt.show()
 
